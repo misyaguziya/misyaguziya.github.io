@@ -1,0 +1,13 @@
+title: misyaguziya's Repository
+description: VRChat-related software and tools
+author: misyaguziya
+url: https://misyaguziya.github.io
+baseurl: ""
+markdown: kramdown
+theme: minima
+
+# Build settings
+exclude:
+  - .gitignore
+  - README.md
+  - .git
