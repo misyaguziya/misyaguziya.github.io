@@ -6,6 +6,10 @@ baseurl: ""
 markdown: kramdown
 theme: minima
 
+# Custom head
+head_includes:
+  - custom-head.html
+
 # Build settings
 exclude:
   - .gitignore
