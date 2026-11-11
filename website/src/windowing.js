@@ -5,7 +5,7 @@ export function fitRect(rect, bounds) {
   return { x: clamp(rect.x, 8, Math.max(8, bounds.width - width - 8)), y: clamp(rect.y, 8, Math.max(8, bounds.height - height - 8)), width, height };
 }
 export function initialRect(id, bounds) {
-  if (id === 'readme') return fitRect({ x: 16, y: 316, width: 146, height: 204 }, bounds);
+  if (id === 'readme') return fitRect({ x: bounds.height >= 640 ? 16 : 144, y: bounds.height >= 640 ? 416 : 8, width: 146, height: 204 }, bounds);
   const x = Math.min(240, Math.max(168, bounds.width * 0.165));
   return fitRect({ x, y: 48, width: Math.min(1170, bounds.width - x - 28), height: Math.min(1438, bounds.height - 96) }, bounds);
 }
@@ -21,7 +21,7 @@ export function windowReducer(state, action) {
     case 'close': return { ...state, active: null, [action.id]: { ...item, mode: 'closed' } };
     case 'maximize': return { ...state, active: action.id, [action.id]: { ...item, mode: item.mode === 'maximized' ? 'normal' : 'maximized' } };
     case 'move': return item.mode !== 'normal' ? state : { ...state, [action.id]: { ...item, rect: fitRect({ ...item.rect, x: action.x, y: action.y }, action.bounds) } };
-    case 'resize': return { ...state, projects: { ...state.projects, rect: initialRect('projects', action.bounds) }, readme: { ...state.readme, rect: fitRect(state.readme.rect, action.bounds) } };
+    case 'resize': return { ...state, projects: { ...state.projects, rect: initialRect('projects', action.bounds) }, readme: { ...state.readme, rect: initialRect('readme', action.bounds) } };
     case 'reset': return createWindows(action.bounds);
     default: return state;
   }

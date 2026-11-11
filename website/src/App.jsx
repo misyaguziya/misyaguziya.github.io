@@ -6,10 +6,17 @@ import { createWindows, windowReducer } from './windowing.js';
 const isVisible = (item) => item.mode === 'normal' || item.mode === 'maximized';
 const initialBounds = () => ({ width: window.innerWidth, height: Math.max(400, window.innerHeight - 104) });
 
-function ResourceLink({ label, href, project }) {
-  return <a className="resource-link" href={href} target="_blank" rel="noopener noreferrer" aria-label={`${project} — ${label}（新しいタブで開く）`}>
-    {label}<ArrowUpRightIcon size={16} aria-hidden="true" />
+function ResourceLink({ label, href, project, primary = false }) {
+  const displayLabel = label === 'Download' ? 'ダウンロード' : label;
+  return <a className={`resource-link${primary ? ' primary-link' : ''}`} href={href} target="_blank" rel="noopener noreferrer" aria-label={`${project} — ${displayLabel}（新しいタブで開く）`}>
+    {displayLabel}<ArrowUpRightIcon size={16} aria-hidden="true" />
   </a>;
+}
+
+function ProjectLinks({ project }) {
+  const primary = project.links.find(([label]) => label === 'Download') || project.links[0];
+  const links = [primary, ...project.links.filter(link => link !== primary)];
+  return <ul className="resource-list">{links.map(link => <li key={link[1]}><ResourceLink label={link[0]} href={link[1]} project={project.name} primary={link === primary} /></li>)}</ul>;
 }
 
 function ProjectIcon({ project }) {
@@ -26,16 +33,14 @@ function ProjectContent({ selected, onNavigate, scrollRef }) {
     </nav>
     <main ref={scrollRef} className="project-scroll" id="main-content" tabIndex={-1}>
       <header className="intro" id="projects" tabIndex={-1}>
-        <p className="intro-eyebrow">PERSONAL REPOSITORY</p>
         <h1>misyaguziya’s Repository</h1>
-        <p className="author-name">misyaguziya</p>
         <p className="intro-description">VRChat関連のソフトウェアとツールの集約ページです。</p>
       </header>
       <section aria-labelledby="projects-heading" className="projects-section">
-        <div className="section-heading"><h2 id="projects-heading">Projects</h2><span>06</span></div>
-        <div className="project-list">{projects.map(project => <article className={`project-row ${selected === project.id || (selected === 'projects' && project.id === 'vrct') ? 'highlighted' : ''}`} id={project.id} key={project.id} tabIndex={-1}>
+        <div className="section-heading"><h2 id="projects-heading">Projects</h2><span>6</span></div>
+        <div className="project-list">{projects.map(project => <article className={`project-row ${selected === project.id ? 'highlighted' : ''}`} id={project.id} key={project.id} tabIndex={-1}>
           <ProjectIcon project={project} />
-          <div className="project-details"><h3 className="project-name">{project.name}</h3><p>{project.description}</p><ul className="resource-list">{project.links.map(([label, href]) => <li key={href}><ResourceLink label={label} href={href} project={project.name} /></li>)}</ul></div>
+          <div className="project-details"><h3 className="project-name">{project.name}</h3><p>{project.description}</p><ProjectLinks project={project} /></div>
         </article>)}</div>
       </section>
       <section className="booth-section" id="booth" aria-labelledby="booth-heading" tabIndex={-1}>
