@@ -12,11 +12,22 @@ function ResourceLink({ label, href, project }) {
   </a>;
 }
 
+function ProjectIcon({ project }) {
+  return <span className={`project-icon icon-${project.id}`} aria-hidden="true"><span className="project-artwork"><img src={project.icon} alt="" decoding="async" /></span></span>;
+}
+
+function ProjectBrand({ project }) {
+  return <h3 className="project-brand">{project.wordmark
+    ? <><span className={`project-wordmark wordmark-${project.id}`} aria-hidden="true"><span className="project-artwork"><img src={project.wordmark} alt="" decoding="async" /></span></span><span className="sr-only">{project.name}</span></>
+    : <><ProjectIcon project={project} /><span>{project.name}</span></>}
+  </h3>;
+}
+
 function ProjectContent({ selected, onNavigate, scrollRef }) {
   return <div className="window-body">
     <nav className="sidebar" aria-label="作品ナビゲーション">
       <button className={`sidebar-link home-link ${selected === 'projects' ? 'selected' : ''}`} onClick={() => onNavigate('projects')} aria-current={selected === 'projects' ? 'page' : undefined}><HouseIcon size={21} weight="duotone" />Projects</button>
-      <div className="sidebar-projects">{projects.map(project => <button className={`sidebar-link ${selected === project.id ? 'selected' : ''}`} key={project.id} onClick={() => onNavigate(project.id)} aria-current={selected === project.id ? 'location' : undefined}><FileTextIcon size={20} /><span>{project.name}</span></button>)}</div>
+      <div className="sidebar-projects">{projects.map(project => <button className={`sidebar-link ${selected === project.id ? 'selected' : ''}`} key={project.id} onClick={() => onNavigate(project.id)} aria-current={selected === project.id ? 'location' : undefined}><ProjectIcon project={project} /><span>{project.name}</span></button>)}</div>
       <button className={`sidebar-link booth-nav ${selected === 'booth' ? 'selected' : ''}`} onClick={() => onNavigate('booth')} aria-current={selected === 'booth' ? 'location' : undefined}><BagIcon size={21} />BOOTH</button>
       <div className="sidebar-bottom"><span>misyaguziya</span><span>6 projects</span></div>
     </nav>
@@ -30,7 +41,7 @@ function ProjectContent({ selected, onNavigate, scrollRef }) {
       <section aria-labelledby="projects-heading" className="projects-section">
         <div className="section-heading"><h2 id="projects-heading">Projects</h2><span>06</span></div>
         <div className="project-list">{projects.map(project => <article className={`project-row ${selected === project.id || (selected === 'projects' && project.id === 'vrct') ? 'highlighted' : ''}`} id={project.id} key={project.id} tabIndex={-1}>
-          <h3><FileTextIcon weight="duotone" size={29} aria-hidden="true" /><span>{project.name}</span></h3>
+          <ProjectBrand project={project} />
           <div className="project-details"><p>{project.description}</p><ul className="resource-list">{project.links.map(([label, href]) => <li key={href}><ResourceLink label={label} href={href} project={project.name} /></li>)}</ul></div>
         </article>)}</div>
       </section>

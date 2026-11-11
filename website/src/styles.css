@@ -15,3 +15,22 @@
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 .sidebar{min-height:0;overflow-y:auto}
 .no-script{max-width:900px;margin:32px auto;padding:32px;background:#fafbff;border-radius:12px;line-height:1.8}.no-script a{color:#345cca}.no-script section{margin:32px 0}
+
+/* Official artwork stays intact; product-cover logos are framed with CSS. */
+.project-icon{width:52px;height:52px;display:flex;align-items:center;flex-shrink:0}
+.project-artwork{display:block;position:relative;width:100%;overflow:hidden}
+.project-artwork img{display:block;width:100%;height:auto}
+.project-icon .project-artwork{aspect-ratio:1}
+.project-icon .project-artwork img{height:100%;object-fit:contain}
+.sidebar-link .project-icon{width:24px;height:24px}
+.project-row .project-brand{flex-direction:column;align-items:flex-start;justify-content:center;gap:10px;min-height:70px;margin:0;min-width:0}
+.project-wordmark{display:block;width:100%;max-width:190px}
+.wordmark-vrct .project-artwork{aspect-ratio:3200/850}
+.wordmark-mskb .project-artwork{aspect-ratio:505/142;border-radius:4px}
+.wordmark-mskb img{position:absolute;width:202.7723%;max-width:none;left:-7.9208%;top:-22.5352%}
+.wordmark-oscsignalcraft{max-width:160px}
+.wordmark-oscsignalcraft .project-artwork,.icon-oscsignalcraft .project-artwork{aspect-ratio:520/352;border-radius:3px}
+.wordmark-oscsignalcraft img,.icon-oscsignalcraft .project-artwork img{position:absolute;width:196.9231%;height:auto;max-width:none;left:-48.4615%;top:-97.4432%}
+.icon-window-shrinker .project-artwork{border-radius:5px}
+.icon-window-shrinker .project-artwork img{position:absolute;width:188.2353%;height:auto;max-width:none;left:-44.1176%;top:-56.9853%}
+@media(max-width:760px){.project-row .project-brand{flex-direction:row;align-items:center;justify-content:flex-start;min-height:52px;gap:14px}.project-row .project-brand>span:last-child:not(.sr-only){min-width:0;overflow-wrap:anywhere}.project-wordmark{max-width:205px}.wordmark-oscsignalcraft{max-width:160px}.sidebar-link .project-icon{width:20px;height:20px}}
