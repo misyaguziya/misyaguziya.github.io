@@ -13,6 +13,7 @@ VRChat関連のソフトウェアとツールの集約ページです。
 VRChat会話をサポートする翻訳・文字起こしソフトウェア
 
 - **Repository:** [https://github.com/misyaguziya/VRCT](https://github.com/misyaguziya/VRCT)
+- **Download:** [https://misyaguziya.booth.pm/items/5155325](https://misyaguziya.booth.pm/items/5155325)
 - **Documents:** [https://misyaguziya.github.io/VRCT-Docs/](https://misyaguziya.github.io/VRCT-Docs/)
 
 ### MSKB
@@ -40,4 +41,16 @@ VRChat用のCLIベースのOSCのログを取得するアプリケーション
 
 VRChat用のExpressionMenuからwindowsのソフトを起動するアプリケーション
 
-- **Repository:** [https://github.com/misyaguziya/OSCSignalCraft](https://github.com/misyaguziya/OSCSignalCraft)
+- **Download:** [https://misyaguziya.booth.pm/items/5351560](https://misyaguziya.booth.pm/items/5351560)
+
+### VRC Window Shrinker
+
+VRChatのウィンドウを小さくして最小化するアプリケーション
+
+- **Download:** [https://misyaguziya.booth.pm/items/5270832](https://misyaguziya.booth.pm/items/5270832)
+
+## BOOTH
+
+配布しているソフトウェアの一覧です。
+
+- [https://misyaguziya.booth.pm/](https://misyaguziya.booth.pm/)
