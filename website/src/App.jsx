@@ -16,13 +16,6 @@ function ProjectIcon({ project }) {
   return <span className={`project-icon icon-${project.id}`} aria-hidden="true"><span className="project-artwork"><img src={project.icon} alt="" decoding="async" /></span></span>;
 }
 
-function ProjectBrand({ project }) {
-  return <h3 className="project-brand">{project.wordmark
-    ? <><span className={`project-wordmark wordmark-${project.id}`} aria-hidden="true"><span className="project-artwork"><img src={project.wordmark} alt="" decoding="async" /></span></span><span className="sr-only">{project.name}</span></>
-    : <><ProjectIcon project={project} /><span>{project.name}</span></>}
-  </h3>;
-}
-
 function ProjectContent({ selected, onNavigate, scrollRef }) {
   return <div className="window-body">
     <nav className="sidebar" aria-label="作品ナビゲーション">
@@ -41,8 +34,8 @@ function ProjectContent({ selected, onNavigate, scrollRef }) {
       <section aria-labelledby="projects-heading" className="projects-section">
         <div className="section-heading"><h2 id="projects-heading">Projects</h2><span>06</span></div>
         <div className="project-list">{projects.map(project => <article className={`project-row ${selected === project.id || (selected === 'projects' && project.id === 'vrct') ? 'highlighted' : ''}`} id={project.id} key={project.id} tabIndex={-1}>
-          <ProjectBrand project={project} />
-          <div className="project-details"><p>{project.description}</p><ul className="resource-list">{project.links.map(([label, href]) => <li key={href}><ResourceLink label={label} href={href} project={project.name} /></li>)}</ul></div>
+          <ProjectIcon project={project} />
+          <div className="project-details"><h3 className="project-name">{project.name}</h3><p>{project.description}</p><ul className="resource-list">{project.links.map(([label, href]) => <li key={href}><ResourceLink label={label} href={href} project={project.name} /></li>)}</ul></div>
         </article>)}</div>
       </section>
       <section className="booth-section" id="booth" aria-labelledby="booth-heading" tabIndex={-1}>

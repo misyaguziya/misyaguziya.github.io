@@ -17,20 +17,24 @@
 .no-script{max-width:900px;margin:32px auto;padding:32px;background:#fafbff;border-radius:12px;line-height:1.8}.no-script a{color:#345cca}.no-script section{margin:32px 0}
 
 /* Official artwork stays intact; product-cover logos are framed with CSS. */
-.project-icon{width:52px;height:52px;display:flex;align-items:center;flex-shrink:0}
+.project-icon{width:64px;height:64px;display:flex;align-items:center;flex-shrink:0}
 .project-artwork{display:block;position:relative;width:100%;overflow:hidden}
 .project-artwork img{display:block;width:100%;height:auto}
 .project-icon .project-artwork{aspect-ratio:1}
 .project-icon .project-artwork img{height:100%;object-fit:contain}
 .sidebar-link .project-icon{width:24px;height:24px}
-.project-row .project-brand{flex-direction:column;align-items:flex-start;justify-content:center;gap:10px;min-height:70px;margin:0;min-width:0}
-.project-wordmark{display:block;width:100%;max-width:190px}
-.wordmark-vrct .project-artwork{aspect-ratio:3200/850}
-.wordmark-mskb .project-artwork{aspect-ratio:505/142;border-radius:4px}
-.wordmark-mskb img{position:absolute;width:202.7723%;max-width:none;left:-7.9208%;top:-22.5352%}
-.wordmark-oscsignalcraft{max-width:160px}
-.wordmark-oscsignalcraft .project-artwork,.icon-oscsignalcraft .project-artwork{aspect-ratio:520/352;border-radius:3px}
-.wordmark-oscsignalcraft img,.icon-oscsignalcraft .project-artwork img{position:absolute;width:196.9231%;height:auto;max-width:none;left:-48.4615%;top:-97.4432%}
+.project-list .project-row{grid-template-columns:64px minmax(0,1fr);gap:24px;align-items:start}
+.project-list .project-row>.project-icon{padding:4px}
+.project-list .project-details{border-left:0;padding-left:0}
+.project-row .project-name{display:flex;align-items:center;min-height:30px;margin:0 0 10px;font-size:20px;line-height:1.5;letter-spacing:-.3px;overflow-wrap:anywhere}
+.icon-vrct .project-artwork{aspect-ratio:128/120}
+.icon-vrct .project-artwork img{position:absolute;top:-2.5%;height:auto}
+.icon-mskb .project-artwork{aspect-ratio:466/481}
+.icon-mskb .project-artwork img{position:absolute;width:109.8712%;height:auto;max-width:none;left:-4.9356%;top:-3.7422%}
+.icon-vrct-tts .project-artwork{aspect-ratio:1134/935}
+.icon-vrct-tts .project-artwork img{position:absolute;width:114.6384%;height:auto;max-width:none;left:-9.5238%;top:-18.5027%}
+.icon-oscsignalcraft .project-artwork{aspect-ratio:520/352;border-radius:3px}
+.icon-oscsignalcraft .project-artwork img{position:absolute;width:196.9231%;height:auto;max-width:none;left:-48.4615%;top:-97.4432%}
 .icon-window-shrinker .project-artwork{border-radius:5px}
 .icon-window-shrinker .project-artwork img{position:absolute;width:188.2353%;height:auto;max-width:none;left:-44.1176%;top:-56.9853%}
-@media(max-width:760px){.project-row .project-brand{flex-direction:row;align-items:center;justify-content:flex-start;min-height:52px;gap:14px}.project-row .project-brand>span:last-child:not(.sr-only){min-width:0;overflow-wrap:anywhere}.project-wordmark{max-width:205px}.wordmark-oscsignalcraft{max-width:160px}.sidebar-link .project-icon{width:20px;height:20px}}
+@media(max-width:760px){.project-list .project-row{grid-template-columns:48px minmax(0,1fr);gap:14px;padding-left:8px;padding-right:8px}.project-list .project-row>.project-icon{width:48px;height:48px;padding:2px}.project-row .project-name{font-size:18px}.sidebar-link .project-icon{width:20px;height:20px}}
