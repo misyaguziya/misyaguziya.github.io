@@ -10,10 +10,11 @@ test('original content is preserved alongside the new OverRec destinations', () 
   const originalLinks = [...original.matchAll(/<a[^>]*href="(https:[^"]+)"/g)].map(match => match[1]);
   const actualLinks = [...projects.flatMap(project => project.links.map(([, href]) => href)), boothUrl];
   assert.equal(projects.length, 7);
-  assert.equal(actualLinks.length, 16);
+  assert.equal(actualLinks.length, 17);
   assert.deepEqual(actualLinks.sort(), [...originalLinks,
     'https://misyaguziya.booth.pm/items/9175989',
     'https://misyaguziya.github.io/OverRec-Docs/',
+    'https://www.youtube.com/watch?v=MmgiEayaoLs',
     'https://github.com/misyaguziya/OverRec-Docs/issues',
   ].sort());
   for (const project of projects.filter(project => project.id !== 'overrec')) {
