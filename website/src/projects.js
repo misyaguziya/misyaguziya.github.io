@@ -11,6 +11,11 @@ export const projects = [
     ['使用方法', 'https://www.youtube.com/watch?v=MDC7kWS27nE'],
     ['Issues', 'https://github.com/misyaguziya/MSKB-Docs/issues'],
   ] },
+  { id: 'overrec', name: 'OverRec', icon: '/assets/projects/overrec-icon.png', description: 'VR内の手首パネルから、OBSの録画・配信・リプレイ保存を操作するツール', links: [
+    ['Download', 'https://misyaguziya.booth.pm/items/9175989'],
+    ['Documents', 'https://misyaguziya.github.io/OverRec-Docs/'],
+    ['Issues', 'https://github.com/misyaguziya/OverRec-Docs/issues'],
+  ] },
   { id: 'vrct-tts', name: 'VRCT-TTS', icon: '/assets/projects/vrct-tts-icon.png', description: 'VRCTと連携して多言語対応の音声合成を行うアプリケーション', links: [
     ['Repository', 'https://github.com/misyaguziya/VRCT-TTS'],
   ] },

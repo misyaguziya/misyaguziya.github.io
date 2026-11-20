@@ -29,7 +29,7 @@ function ProjectContent({ selected, onNavigate, scrollRef }) {
       <button className={`sidebar-link home-link ${selected === 'projects' ? 'selected' : ''}`} onClick={() => onNavigate('projects')} aria-current={selected === 'projects' ? 'page' : undefined}><HouseIcon size={21} weight="duotone" />Projects</button>
       <div className="sidebar-projects">{projects.map(project => <button className={`sidebar-link ${selected === project.id ? 'selected' : ''}`} key={project.id} onClick={() => onNavigate(project.id)} aria-current={selected === project.id ? 'location' : undefined}><ProjectIcon project={project} /><span>{project.name}</span></button>)}</div>
       <button className={`sidebar-link booth-nav ${selected === 'booth' ? 'selected' : ''}`} onClick={() => onNavigate('booth')} aria-current={selected === 'booth' ? 'location' : undefined}><BagIcon size={21} />BOOTH</button>
-      <div className="sidebar-bottom"><span>misyaguziya</span><span>6 projects</span></div>
+      <div className="sidebar-bottom"><span>misyaguziya</span><span>{projects.length} projects</span></div>
     </nav>
     <main ref={scrollRef} className="project-scroll" id="main-content" tabIndex={-1}>
       <header className="intro" id="projects" tabIndex={-1}>
@@ -37,7 +37,7 @@ function ProjectContent({ selected, onNavigate, scrollRef }) {
         <p className="intro-description">VRChat関連のソフトウェアとツールの集約ページです。</p>
       </header>
       <section aria-labelledby="projects-heading" className="projects-section">
-        <div className="section-heading"><h2 id="projects-heading">Projects</h2><span>6</span></div>
+        <div className="section-heading"><h2 id="projects-heading">Projects</h2><span>{projects.length}</span></div>
         <div className="project-list">{projects.map(project => <article className={`project-row ${selected === project.id ? 'highlighted' : ''}`} id={project.id} key={project.id} tabIndex={-1}>
           <ProjectIcon project={project} />
           <div className="project-details"><h3 className="project-name">{project.name}</h3><p>{project.description}</p><ProjectLinks project={project} /></div>

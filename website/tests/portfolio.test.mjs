@@ -5,14 +5,18 @@ import { projects, boothUrl } from '../src/projects.js';
 import { createWindows, windowReducer, fitRect } from '../src/windowing.js';
 
 const bounds = { width: 1440, height: 796 };
-test('all descriptions and external destinations match the captured original site', () => {
+test('original content is preserved alongside the new OverRec destinations', () => {
   const original = readFileSync(new URL('./fixtures/original-site.html', import.meta.url), 'utf8');
   const originalLinks = [...original.matchAll(/<a[^>]*href="(https:[^"]+)"/g)].map(match => match[1]);
   const actualLinks = [...projects.flatMap(project => project.links.map(([, href]) => href)), boothUrl];
-  assert.equal(projects.length, 6);
-  assert.equal(actualLinks.length, 13);
-  assert.deepEqual(actualLinks.sort(), originalLinks.sort());
-  for (const project of projects) {
+  assert.equal(projects.length, 7);
+  assert.equal(actualLinks.length, 16);
+  assert.deepEqual(actualLinks.sort(), [...originalLinks,
+    'https://misyaguziya.booth.pm/items/9175989',
+    'https://misyaguziya.github.io/OverRec-Docs/',
+    'https://github.com/misyaguziya/OverRec-Docs/issues',
+  ].sort());
+  for (const project of projects.filter(project => project.id !== 'overrec')) {
     assert.ok(original.includes(`>${project.name}</h3>`), project.name);
     assert.ok(original.includes(`<p>${project.description}</p>`), project.description);
   }
